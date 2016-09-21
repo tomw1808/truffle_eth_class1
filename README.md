@@ -44,5 +44,13 @@ and
 truffle build
 ```
 
+or
+
+```
+truffle serve
+```
+
+which opens an HTTP Server on http://localhost:8080
+
 ## Contact
 If you run into any problems, don't hesitate to contact us on the course-forum at any time. If you use the forum-search function, there is a high chance that you find the answer to your problem already.
