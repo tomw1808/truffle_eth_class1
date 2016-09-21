@@ -28,10 +28,10 @@ app.controller("ShoweventsController", function($scope) {
 
     $scope.withdrawls = [];
 
-    contract.getAmountOfWithdrawls.call(web3.eth.accounts[0]).then(function(result) {
+    myContract.getAmountOfWithdrawls.call(web3.eth.accounts[0]).then(function(result) {
         var numberOfWithdrawls = result.toNumber();
         for(var i = 1; i <= numberOfWithdrawls; i++) {
-            contract.getWithdrawlForAddress.call(web3.eth.accounts[0], i).then(function(result_withdrawl) {
+            myContract.getWithdrawlForAddress.call(web3.eth.accounts[0], i).then(function(result_withdrawl) {
                 result_withdrawl[1] = web3.fromWei(result_withdrawl[1], "ether").toNumber();
                 $scope.withdrawls.push(result_withdrawl);
                 $scope.$apply();

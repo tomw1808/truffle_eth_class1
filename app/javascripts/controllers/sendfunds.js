@@ -23,10 +23,11 @@ app.controller('SendfundsController', function($scope){
 
     $scope.withdrawFunds = function(address, amount) {
         var contract = SimpleWallet.deployed();
-        contract.sendFunds(web3.toWei(amount, "ether"), address, {from: web3.eth.accounts[0], gas: 20000}).then(function () {
+        contract.sendFunds(web3.toWei(amount, "ether"), address, {from: web3.eth.accounts[0], gas: 200000}).then(function () {
             $scope.transfer_success = true;
             $scope.$apply();
         }).catch(function (error) {
+            console.error(error);
             $scope.has_errors = error;
             $scope.$apply();
         });
