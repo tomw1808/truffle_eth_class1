@@ -1,0 +1,43 @@
+<div ng-hide="transfer_success || has_errors.length > 0" class="row">
+    <div class="col-lg-6">
+        <h1>Deposit</h1>
+        <form ng-submit="depositFunds(address_from, amount_from)">
+            <div class="form-group">
+                <label for="addressFrom">Address From</label>
+                <select ng-model="address_from" id="addressFrom">
+                    <option ng-repeat="account in accounts">{{account}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="amountInEther">Amount in Ether</label>
+                <input type="number" class="form-control" id="amountInEther" placeholder="1" ng-model="amount_from">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+    </div>
+    <div class="col-lg-6">
+
+
+        <h1>Withdraw</h1>
+        <form ng-submit="withdrawFunds(address, amount)">
+            <div class="form-group">
+                <label for="addressRecipient">Address To</label>
+                <input type="text" ng-model="address" class="form-control" id="addressRecipient" placeholder="0x123456...">
+            </div>
+            <div class="form-group">
+                <label for="amountInEther1">Amount in Ether</label>
+                <input type="number" class="form-control" id="amountInEther1" placeholder="1" ng-model="amount">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        </div>
+
+</div>
+
+<div ng-show="transfer_success">
+    <div class="alert alert-success" role="alert">Sending was a success</div>
+</div>
+<div ng-show="has_errors">
+    <div class="alert alert-error" role="alert">{{has_errors}}</div>
+</div>
