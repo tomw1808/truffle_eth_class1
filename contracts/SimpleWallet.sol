@@ -1,3 +1,4 @@
+pragma solidity ^0.4.0;
 contract SimpleWallet {
 
     address owner;
@@ -23,7 +24,7 @@ contract SimpleWallet {
         owner = msg.sender;
     }
 
-    function() {
+    function() payable{
         if(isAllowedToSend(msg.sender)) {
             Deposit(msg.sender, msg.value);
          } else {
