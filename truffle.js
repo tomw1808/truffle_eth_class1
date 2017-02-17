@@ -16,9 +16,17 @@ module.exports = {
     "images/": "images/",
     "views/": "views/"
   },
-  rpc: {
-    host: "localhost",
-    port: 8545,
-    gas: 3550000
+
+  networks: {
+    development: {
+      host: "localhost",
+      port: 8545,
+      network_id: "*" // match any network
+    },
+    live: {
+      host: "localhost",
+      port: 8545,
+      network_id: "*" // match any network
+    }
   }
 };
