@@ -114,6 +114,18 @@ If something like this pops up:
 dependency_path = source.resolve_dependency_path(import_path, dependency_path);
 ```
 
+or
+
+```
+/usr/lib/node_modules/truffle/node_modules/truffle-compile/profiler.js:120
+        if (ancestors.length > 0) {
+                     ^
+
+TypeError: Cannot read property 'length' of undefined
+    at walk_from (/usr/lib/node_modules/truffle/node_modules/truffle-compile/profiler.js:120:22)
+
+```
+
 then try to install truffle 3.1.9:
 
 ```
