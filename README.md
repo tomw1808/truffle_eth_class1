@@ -107,6 +107,19 @@ which opens an HTTP Server on http://localhost:8080
 
 ## Known Issues
 
+### Error when running truffle test/migrate
+
+If something like this pops up:
+```
+dependency_path = source.resolve_dependency_path(import_path, dependency_path);
+```
+
+then try to install truffle 3.1.9:
+
+```
+npm install -g truffle@3.1.9
+```
+
 ### Geth Attach
 
 https://www.udemy.com/ethereum-developer/learn/v4/questions/1846724
