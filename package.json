@@ -1,0 +1,29 @@
+{
+  "name": "ethereum-developer-course-1-udemy",
+  "version": "1.0.0",
+  "description": "This is the official Repository to the Ethereum Developer Course on Udemy",
+  "main": "/",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomw1808/truffle_eth_class1.git"
+  },
+  "keywords": [
+    "ethereum",
+    "wallet",
+    "course",
+    "solidity",
+    "truffle"
+  ],
+  "author": "Thomas Wiesner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomw1808/truffle_eth_class1/issues"
+  },
+  "homepage": "https://github.com/tomw1808/truffle_eth_class1#readme",
+  "devDependencies": {
+    "truffle-default-builder": "^2.0.0"
+  }
+}

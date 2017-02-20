@@ -85,6 +85,14 @@ bower install
 
 which installs the angular components.
 
+and then run
+
+```
+npm install
+```
+
+which installs the node components.
+
 Additionally you need to have a geth node running (or the ethereumjs-testrpc), then you can simply:
 
 ```
