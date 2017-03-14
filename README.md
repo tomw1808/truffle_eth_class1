@@ -140,6 +140,23 @@ then try to install truffle 3.1.9:
 npm install -g truffle@3.1.9
 ```
 
+### Error when installing truffle
+
+Something like
+
+ `... receive errors including "MSBUILD : error MSB3428: Could not load the Visual C++ component "VCBuild.exe".`
+
+or
+
+`... node_modules\truffle\node_modules\sha3\build\sha3.vcxproj(20,3): error MSB4019: The imported project "C:\Microsoft.Cpp.Default.props" was not found. Confirm that the path in the <Import> declaration is correct, and that the file exists on disk.".  `
+
+When you have installed Visual Studio, make sure you have opened a c++ project once.
+
+Then try `npm config set msvs_version 2015 --global` and in addition you can try to install the ms-build tools:
+```
+npm install --global --production windows-build-tools
+```
+
 ### Geth Attach
 
 https://www.udemy.com/ethereum-developer/learn/v4/questions/1846724

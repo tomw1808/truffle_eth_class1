@@ -7,7 +7,7 @@ app.controller("ShoweventsController", function($scope) {
     $scope.ourEvents = [];
     $scope.ourDepositEvents = [];
     $scope.withdrawls = [];
-    
+
     SimpleWallet.deployed().then(function(myContract) {
 
         var events = myContract.allEvents({fromBlock: 0, toBlock: 'latest'});
