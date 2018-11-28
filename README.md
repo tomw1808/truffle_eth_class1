@@ -8,8 +8,9 @@ The scope of the DApp is to show the usage of Truffle,
 * Web3 
 * Listen and react to specific events
 * Write Test Cases
-* Deploy the DApp
-* Work with MIST
+* Deploy the DApp using MetaMask or Truffle
+* Work with Ganache, Go-Etheruem and other Blockchain Nodes
+* Understand where Private Keys are located at
 * Integrate Angular into Truffle
 
 ## Install Instructions
@@ -22,38 +23,15 @@ Developing for Ethereum is sometimes frustrating, because things change at fast 
 
 ### Windows
 
-1. Download Python:
- https://www.python.org/downloads/release/python-2712/
-
-2. .Net Packages
- https://www.microsoft.com/en-US/download/details.aspx?id=49982
-
- https://www.microsoft.com/en-us/download/details.aspx?id=30653
-
-3. SSL
- https://slproweb.com/products/Win32OpenSSL.html
-
-4. and eventually you also need the Visual Studio, because of the C++ Compiler:
- https://www.visualstudio.com/vs/
-
- After downloading the Visual Studio make sure to open one time _a new c++ project_.
-
-5. Install the Git-Bash as it comes with a mingw:
- https://git-scm.com/downloads
-
-6. Install NodeJS and the Node Package Manager (NPM)
+1. Install NodeJS and the Node Package Manager (NPM)
  https://nodejs.org/en/download/
 
+2. Install the windows-build-tools
+`npm install -g windows-build-tools`
 
 ### Ubuntu
 
-1. Install necessary packages:
-```
-sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install curl git vim build-essential
-```
-
-2. Install NodeJS and NPM
+1. Install NodeJS and NPM
 ```
  curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
  sudo apt-get install -y nodejs
@@ -150,7 +128,6 @@ or
 
 `... node_modules\truffle\node_modules\sha3\build\sha3.vcxproj(20,3): error MSB4019: The imported project "C:\Microsoft.Cpp.Default.props" was not found. Confirm that the path in the <Import> declaration is correct, and that the file exists on disk.".  `
 
-When you have installed Visual Studio, make sure you have opened a c++ project once.
 
 Then try `npm config set msvs_version 2015 --global` and in addition you can try to install the ms-build tools:
 ```
@@ -175,12 +152,12 @@ geth init path/to/genesis.json --datadir=/path/to/some/folder
 
 
 ### Solidity Compilation Errors/Warnings
-Solidity is in active maintenance and things change _all the time_! The code throughout the course was written for SolC 3.5, the current version (at the time this Readme was written) is 0.4.8.
+Solidity is in active maintenance and things change _all the time_! 
 
-Any Solidity Program can be "forced" to use another compiler version (older one) by using as _first line in your program_
+Any Solidity Program can be "made" to use another compiler version (older one) by defining it in the  _first line in your program_
 `pragma solidity ^0.4.0;` for version 0.4.0, change it to whatever version you might need.
 
-The code here is updated to work with solidity 0.4.8.
+The code here is updated to work with solidity 0.5.0.
 
 
 ## Contact

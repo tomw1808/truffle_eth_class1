@@ -1,7 +1,7 @@
-pragma solidity ^0.4.0;
+pragma solidity >=0.4.24 <0.6.0;
 contract SimpleWallet {
 
-    address owner;
+    address payable owner;
 
     struct WithdrawlStruct {
         address to;
@@ -20,61 +20,52 @@ contract SimpleWallet {
     event Deposit(address _sender, uint amount);
     event Withdrawl(address _sender, uint amount, address _beneficiary);
 
-    function SimpleWallet() {
+    constructor() public {
         owner = msg.sender;
     }
-
-    function() payable{
-        if(isAllowedToSend(msg.sender)) {
-            Deposit(msg.sender, msg.value);
-         } else {
-            throw;
-         }
+    
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
     }
 
-    function sendFunds(uint amount, address receiver) returns (uint) {
-        if(isAllowedToSend(msg.sender)) {
-          if(this.balance >= amount) {
-            if(!receiver.send(amount)) {
-              throw;
-            }
-            Withdrawl(msg.sender, amount, receiver);
-            isAllowedToSendFundsMapping[msg.sender].amount_sends++;
-            isAllowedToSendFundsMapping[msg.sender].withdrawls[isAllowedToSendFundsMapping[msg.sender].amount_sends].to = receiver;
-            isAllowedToSendFundsMapping[msg.sender].withdrawls[isAllowedToSendFundsMapping[msg.sender].amount_sends].amount = amount;
-            return this.balance;
-          }
-        }
+    function() payable external {
+        require(isAllowedToSend(msg.sender));
+        emit Deposit(msg.sender, msg.value);
+    }
+
+    function sendFunds(uint amount, address payable receiver) public {
+        require(isAllowedToSend(msg.sender));
+        require(address(this).balance >= amount);
+        receiver.transfer(amount);
+        emit Withdrawl(msg.sender, amount, receiver);
+        isAllowedToSendFundsMapping[msg.sender].amount_sends++;
+        isAllowedToSendFundsMapping[msg.sender].withdrawls[isAllowedToSendFundsMapping[msg.sender].amount_sends].to = receiver;
+        isAllowedToSendFundsMapping[msg.sender].withdrawls[isAllowedToSendFundsMapping[msg.sender].amount_sends].amount = amount;
       }
 
-      function getAmountOfWithdrawls(address _address) constant returns (uint) {
+      function getAmountOfWithdrawls(address _address) public view returns (uint) {
         return isAllowedToSendFundsMapping[_address].amount_sends;
       }
 
-      function getWithdrawlForAddress(address _address, uint index) constant returns (address, uint) {
+      function getWithdrawlForAddress(address _address, uint index) public view returns (address, uint) {
         return (isAllowedToSendFundsMapping[_address].withdrawls[index].to, isAllowedToSendFundsMapping[_address].withdrawls[index].amount);
       }
 
-      function allowAddressToSendMoney(address _address) {
-        if(msg.sender == owner) {
-            isAllowedToSendFundsMapping[_address].allowed = true;
-         }
+      function allowAddressToSendMoney(address _address) public onlyOwner {
+          isAllowedToSendFundsMapping[_address].allowed = true;
       }
 
-      function disallowAddressToSendMoney(address _address) {
-        if(msg.sender == owner) {
-            isAllowedToSendFundsMapping[_address].allowed = false;
-         }
+      function disallowAddressToSendMoney(address _address) public {
+          isAllowedToSendFundsMapping[_address].allowed = false;
       }
 
-      function isAllowedToSend(address _address) constant returns (bool) {
+      function isAllowedToSend(address _address) public view returns (bool) {
         return isAllowedToSendFundsMapping[_address].allowed || _address == owner;
       }
 
-      function killWallet() {
-        if(msg.sender == owner) {
-          suicide(owner);
-        }
+      function killWallet() public onlyOwner {
+          selfdestruct(owner);
       }
 
 
