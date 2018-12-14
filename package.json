@@ -1,29 +1,60 @@
 {
-  "name": "ethereum-developer-course-1-udemy",
-  "version": "1.0.0",
-  "description": "This is the official Repository to the Ethereum Developer Course on Udemy",
-  "main": "/",
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tomw1808/truffle_eth_class1.git"
-  },
-  "keywords": [
-    "ethereum",
-    "wallet",
-    "course",
-    "solidity",
-    "truffle"
-  ],
-  "author": "Thomas Wiesner",
+  "name": "angular-truffle-box",
+  "version": "0.0.0",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tomw1808/truffle_eth_class1/issues"
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test --watch=false",
+    "lint": "ng lint",
+    "e2e": "ng e2e",
+    "postinstall": "node patch.js"
   },
-  "homepage": "https://github.com/tomw1808/truffle_eth_class1#readme",
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "6.1.7",
+    "@angular/cdk": "^6.4.7",
+    "@angular/common": "6.1.7",
+    "@angular/compiler": "6.1.7",
+    "@angular/core": "6.1.7",
+    "@angular/forms": "6.1.7",
+    "@angular/http": "6.1.7",
+    "@angular/material": "^6.4.7",
+    "@angular/platform-browser": "6.1.7",
+    "@angular/platform-browser-dynamic": "6.1.7",
+    "@angular/platform-server": "6.1.7",
+    "@angular/router": "6.1.7",
+    "core-js": "^2.5.4",
+    "rxjs": "^6.3.2",
+    "web3": "^1.0.0-beta.36",
+    "zone.js": "^0.8.26"
+  },
   "devDependencies": {
-    "truffle-default-builder": "^2.0.0"
+    "@angular-devkit/build-angular": "~0.8.0",
+    "@angular-devkit/core": "0.8.1",
+    "@angular/cli": "^6.2.1",
+    "@angular/compiler-cli": "6.1.7",
+    "@angular/language-service": "6.1.7",
+    "@types/jasmine": "^2.8.6",
+    "@types/jasminewd2": "^2.0.3",
+    "@types/node": "^6.0.103",
+    "codelyzer": "^3.2.2",
+    "jasmine-core": "^2.99.1",
+    "jasmine-spec-reporter": "^4.2.1",
+    "karma": "^1.7.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-cli": "^1.0.1",
+    "karma-coverage-istanbul-reporter": "^1.4.2",
+    "karma-jasmine": "^1.1.1",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "protractor": "^5.4.1",
+    "protractor-console-plugin": "^0.1.1",
+    "truffle-contract": "^3.0.4",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.9.1",
+    "typescript": "2.9.2",
+    "webpack": "^4.19.0",
+    "webpack-dev-server": "^3.1.8"
   }
 }

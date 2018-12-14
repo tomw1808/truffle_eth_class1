@@ -45,10 +45,10 @@ Download the Genesis File either from [here](genesis.json) or directly from the 
 
 ## Run the Project
 
-On any OS you need Truffle
+On any OS you need Truffle 5, which is at the time of writing in Beta. The Project is optimized for Solidity 0.5.0
 
 ```
-npm install -g truffle
+npm install -g truffle@beta
 ```
 
 and then **clone this repository**
@@ -58,20 +58,24 @@ git clone https://github.com/tomw1808/truffle_eth_class1.git
 and run
 
 ```
-bower install
-```
-
-which installs the angular components.
-
-and then run
-
-```
 npm install
 ```
 
 which installs the node components.
 
-Additionally you need to have a geth node running (or the ethereumjs-testrpc), then you can simply:
+Additionally you need to have a geth/ganache node running (or the ethereumjs-testrpc):
+
+```
+npm install ganache-cli
+```
+
+and then start ganache-cli:
+
+```
+ganache-cli -b 3
+```
+
+then you can simply:
 
 ```
 truffle migrate
@@ -80,43 +84,13 @@ truffle migrate
 and
 
 ```
-truffle build
+npm start
 ```
 
-or
-
-```
-truffle serve
-```
-
-which opens an HTTP Server on http://localhost:8080
+which opens an HTTP Server on http://localhost:4200/
 
 ## Known Issues
 
-### Error when running truffle test/migrate
-
-If something like this pops up:
-```
-dependency_path = source.resolve_dependency_path(import_path, dependency_path);
-```
-
-or
-
-```
-/usr/lib/node_modules/truffle/node_modules/truffle-compile/profiler.js:120
-        if (ancestors.length > 0) {
-                     ^
-
-TypeError: Cannot read property 'length' of undefined
-    at walk_from (/usr/lib/node_modules/truffle/node_modules/truffle-compile/profiler.js:120:22)
-
-```
-
-then try to install truffle 3.1.9:
-
-```
-npm install -g truffle@3.1.9
-```
 
 ### Error when installing truffle
 

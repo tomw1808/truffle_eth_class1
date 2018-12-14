@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-title>Balance of the Wallet</mat-card-title>
+  <mat-card-content>
+    {{model.balanceOfWallet}} Ether
+  </mat-card-content>
+  <mat-card-content>
+    This account is {{model.accountAllowed}} allowed to Deposit and Withdraw Ether!
+  </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-title>Fill up the Wallet</mat-card-title>
+  <mat-card-content>
+    <mat-form-field id="address-selector" class="address-field">
+      <mat-select name="account" (selectionChange)="refreshBalance()" [(value)]="model.account" placeholder="Address">
+        <mat-option *ngFor="let account of accounts" [value]="account">{{account}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <input type="text" matInput id="amount" placeholder="Amount in Ether" (change)="setDepositAmount($event)">
+    </mat-form-field>
+    <button mat-button id="send" (click)="depositEther()">Deposit Ether</button>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-title>Add Address to Address-Whitelist</mat-card-title>
+  <mat-card-content>
+    <mat-form-field id="address-selector" class="address-field">
+        <input type="text" matInput id="receiver" placeholder="Allow this Address" (change)="setWhitelistAddress($event)">
+    </mat-form-field>
+    <button mat-button id="send" (click)="addAllowedAddress()">Allow Address to Deposit and Withdraw Ether</button>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-title>Remove Address from Address-Whitelist</mat-card-title>
+  <mat-card-content>
+    <mat-form-field id="address-selector" class="address-field">
+        <input type="text" matInput id="blacklistAddress" placeholder="Allow this Address" (change)="setBlacklistAddress($event)">
+    </mat-form-field>
+    <button mat-button id="send" (click)="removeAllowedAddress()">Dis-Allow Address to Deposit and Withdraw Ether</button>
+  </mat-card-content>
+</mat-card>
+<mat-card>
+    <mat-card-title>Send Ether from Wallet to Address</mat-card-title>
+  <mat-card-content>
+    <mat-form-field id="address-selector" class="address-field">
+        <input type="text" matInput id="sendToAmount" placeholder="Send Ether to this Address" (change)="setSendToAddress($event)">
+    </mat-form-field>
+    <mat-form-field id="amount-setter">
+        <input type="text" matInput id="sendToAddress" placeholder="Send this Amount of Ether" (change)="setSendToAmount($event)">
+    </mat-form-field>
+    <button mat-button id="send" (click)="sendFromWallet()">Send Ether from Wallet</button>
+  </mat-card-content>
+</mat-card>
